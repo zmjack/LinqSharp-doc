@@ -1,0 +1,207 @@
+### Expoloer LinqSharp
+
+Exploring **LinqSharp** requires a clear understanding of the **SQL** statements it generates.
+
+<br/>
+
+#### Expression trees
+
+**Expression trees** established **C#** as a truly formidable language.
+
+We can easily convert **Lambda** into **Expression Tree** via the **LINQ** API, while **.NET** allows us to convert **Expression Tree** into any form we want.
+
+```mermaid
+graph LR
+Lambda --> ExpTree[Expression Tree]
+ExpTree --> |Provider for SQL Server| SQLServer[SQL of SQLServer]
+ExpTree --> |Provider for MySQL| MySQL[SQL of MySQL]
+ExpTree --> |Other Providers...| Other[Other SQLs...]
+```
+
+Most languages do not provide **Lambda** to **Expression Tree** compile-time conversion, because it also requires true generic support.
+
+This is one of the reasons why **.NET ORM** can be designed to be very easy to use.
+
+<br/>
+
+#### Print SQL
+
+If you don't have a test database available, try **Northwnd**.
+
+With this simple sales network database, we'll show you how to use **LinqSharp**.
+
+```mermaid
+classDiagram
+class Category {
+    + CategoryID int
+    + CategoryName string
+    + Description string
+    ----
+    + Products ICollection~Product~
+}
+class Product {
+    + ProductID int
+    + ProductName string
+    + QuantityPerUnit string
+    + Discontinued bool
+    ----
+    + SupplierLink Supplier
+    + CategoryLink Category
+    ----
+    + OrderDetails ICollection~OrderDetail~
+}
+class Supplier {
+    + SupplierID int
+    + CompanyName string
+    + ContactName string
+    + ContactTitle string
+    + Address string
+    + City string
+    + Region string
+    + PostalCode string
+    + Country string
+    + Phone string
+    + Fax string
+    + HomePage string
+    ----
+    + Products ICollection~Product~
+}
+class OrderDetail {
+    + OrderID int
+    + ProductID int
+    + UnitPrice double
+    + Quantity short
+    + Discount float
+    ----
+    + OrderLink Order
+    + ProductLink Product
+}
+class Order {
+    + OrderID int
+    + CustomerID string
+    + ShipName string
+    + ShipAddress string
+    + ShipCity string
+    + ShipRegion string
+    + ShipPostalCode string
+    + ShipCountry string
+    ----
+    + EmployeeLink Employee
+    ----
+    + OrderDetails ICollection~OrderDetail~
+}
+class Employee {
+    + EmployeeID int
+    + LastName string
+    + FirstName string
+    + Title string
+    + TitleOfCourtesy string
+    + Address string
+    + City string
+    + Region string
+    + PostalCode string
+    + Country string
+    + HomePhone string
+    + Extension string
+    + Notes string
+    + Superordinate Employee
+    + PhotoPath string
+    ----
+    + Subordinates ICollection~Employee~
+    + Orders ICollection~Order~
+}
+Category "1" --> "*" Product
+Supplier "1" --> "*" Product
+Product "1" --> "*" OrderDetail
+Order "1" --> "*" OrderDetail
+Employee  "1" --> "*" Order
+```
+
+1. Create a Console Application ( **.NET 7** ).
+
+2. Use the follow commnd to install **Northwnd**:
+
+    ```powershel
+    dotnet add package Microsoft.EntityFrameworkCore --version 7.0.0
+    dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.0
+    dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 7.0.0
+    dotnet add package LinqSharp --version 7.0
+    dotnet add package Northwnd --version 7.0
+    dotnet add package Ink --version 0.12.1
+    ```
+
+3. Then, you need to add a `NorthwndFactory.cs` file in the root of your project:
+
+    ```csharp
+    public class NorthwndFactory : IDesignTimeDbContextFactory<NorthwndContext>
+    {
+        private static readonly string _connectionString = "Data Source=northwnd.db";
+    
+        public NorthwndContext CreateDbContext(params string[] args)
+        {
+            var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+            var options = new DbContextOptionsBuilder()
+                .UseSqlite(_connectionString, x => x.MigrationsAssembly(assemblyName))
+                .Options;
+            return new NorthwndContext(options);
+        }
+    }
+    ```
+
+4. Open a terminal, execute the follow script to generate a migration, and update it to database:
+
+    ```powershell
+    dotnet ef migrations add InitNorthwnd
+    ```
+
+5. Edit the `Program.cs` file:
+
+    ```csharp
+    static void Main(string[] args)
+    {
+        var factory = new NorthwndFactory();
+        using var context = factory.CreateDbContext();
+    
+        if (!context.Database.GetAppliedMigrations().Any())
+        {
+            context.Database.Migrate();
+            context.InitializeNorthwnd(new NorthwndMemoryContext());
+        }
+    
+        var query = (
+            from c in context.Categories
+            select new
+            {
+                c.CategoryID,
+                c.CategoryName,
+            }
+        );
+        var sql = query.ToQueryString();
+    
+        Echo.Line(sql)
+            .Table(query);
+    }
+    ```
+
+6. Compile and run the application, if all alread done, you will get the output:
+
+    ```sql
+    SELECT "c"."CategoryID", "c"."CategoryName"
+    FROM "Categories" AS "c"
+    ```
+    ```markdown
+    +------------+----------------+
+    | CategoryID | CategoryName   |
+    +------------+----------------+
+    | 1          | Beverages      |
+    | 2          | Condiments     |
+    | 3          | Confections    |
+    | 4          | Dairy Products |
+    | 5          | Grains/Cereals |
+    | 6          | Meat/Poultry   |
+    | 7          | Produce        |
+    | 8          | Seafood        |
+    +------------+----------------+
+    ```
+
+<br/>

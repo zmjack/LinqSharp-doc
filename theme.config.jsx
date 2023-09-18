@@ -1,5 +1,5 @@
 export default {
-  logo: <span>LinqSharp Documentation</span>,
+  logo: <span>LinqSharp</span>,
   project: {
     link: 'https://github.com/zmjack/linqsharp'
   },
@@ -8,8 +8,7 @@ export default {
   search: {
     placeholder: 'Search...'
   },
-  i18n: [
-    { locale: 'en', text: 'English' },
-    { locale: 'zh', text: '中文' }
-  ],
+  feedback: {
+    useLink: () => 'https://github.com/zmjack/linqsharp/issues/new?labels=feedback'
+  }
 }

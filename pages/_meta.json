@@ -1,0 +1,9 @@
+{
+    "index": "Introduction",
+    "guide": "Guide",
+    "linq": "LINQ",
+    "memory": "Memory",
+    "ef": "Entity Framework",
+    "cli": "Command Line Tool",
+    "update-logs": "Update Logs"
+}
