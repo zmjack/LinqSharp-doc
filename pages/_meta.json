@@ -5,5 +5,11 @@
     "memory": "Memory",
     "ef": "Entity Framework",
     "cli": "Command Line Tool",
-    "update-logs": "Update Logs"
+    "update-logs": "Update Logs",
+    "site-zh": {
+        "title": "中文站",
+        "type": "page",
+        "href": "https://zh.linqsharp.net",
+        "newWindow": true
+    }
 }
