@@ -2,8 +2,8 @@ import { useRouter } from 'next/router'
 
 export default {
   useNextSeoProps() {
-    const { asPath } = useRouter()
-    if (asPath !== '/') {
+    const { basePath } = useRouter()
+    if (basePath !== '/') {
       return {
         titleTemplate: '%s – LinqSharp'
       };
