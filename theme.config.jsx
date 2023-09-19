@@ -1,4 +1,19 @@
+import { useRouter } from 'next/router'
+
 export default {
+  useNextSeoProps() {
+    const { asPath } = useRouter()
+    if (asPath !== '/') {
+      return {
+        titleTemplate: '%s – LinqSharp'
+      };
+    } else {
+      return {
+        titleTemplate: 'LinqSharp'
+      };
+    }
+  },
+
   // select site
   head: () => {
     return (
