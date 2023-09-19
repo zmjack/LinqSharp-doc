@@ -4,7 +4,7 @@ export default {
     return (
       <>
         <script dangerouslySetInnerHTML={{
-          __html: `if (location.hostname !== 'localhost') {
+          __html: `if (location.hostname !== 'localhost' && location.pathname === '/') {
             var search = new URLSearchParams(location.search);
             var lang = search.get('lang');
             if (lang === null) lang = navigator.language;
