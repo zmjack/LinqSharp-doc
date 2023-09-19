@@ -7,7 +7,7 @@
     "cli": "Command Line Tool",
     "update-logs": "Update Logs",
     "site-zh": {
-        "title": "中文站",
+        "title": "中文",
         "type": "page",
         "href": "https://zh.linqsharp.net",
         "newWindow": true
