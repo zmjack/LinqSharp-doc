@@ -1,4 +1,22 @@
 export default {
+  // select site
+  head: () => {
+    return (
+      <>
+        <script dangerouslySetInnerHTML={{
+          __html: `if (location.hostname !== 'localhost') {
+            var search = new URLSearchParams(location.search);
+            var lang = search.get('lang');
+            if (lang === null) lang = navigator.language;
+
+            if (lang.startsWith('zh')) {
+              location.href = 'https://zh.linqsharp.net';
+            }
+          }`,
+        }}></script>
+      </>
+    );
+  },
   logo: <span>LinqSharp</span>,
   project: {
     link: 'https://github.com/zmjack/linqsharp'
