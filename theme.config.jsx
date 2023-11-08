@@ -13,19 +13,21 @@ export default {
       };
     }
   },
-
-  // select site
+  banner: {
+    key: 'zh-site',
+    text: (
+      <a href="https://zh.linqsharp.net" target="_blank">
+        🎉 您的语言为 中文，推荐访问 LinqSharp 中文站 →
+      </a>
+    )
+  },
   head: () => {
     return (
       <>
         <script dangerouslySetInnerHTML={{
-          __html: `if (location.hostname !== 'localhost' && location.pathname === '/') {
-            var search = new URLSearchParams(location.search);
-            var lang = search.get('lang');
-            if (lang === null) lang = navigator.language;
-
-            if (lang.startsWith('zh')) {
-              location.href = 'https://zh.linqsharp.net';
+          __html: `if (!localStorage.getItem('zh-site')) {
+            if (!navigator.language.startsWith('zh')) {
+              localStorage.setItem('zh-site', 0);
             }
           }`,
         }}></script>
