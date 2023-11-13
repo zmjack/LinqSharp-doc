@@ -1,27 +1,34 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+interface TypeDefinition {
+    'note': string[],
+    'tip': string[],
+    'important': string[],
+    'warning': string[],
+}
+
+const types: TypeDefinition = {
+    'note': ['md-alert-info', 'docon-memo', 'Note'],
+    'tip': ['md-alert-success', 'docon-lightbulb', 'Tip'],
+    'important': ['md-alert-primary', 'docon-information', 'Important'],
+    'warning': ['md-alert-warning', 'docon-warning', 'Warning'],
+};
+
 export default function Alert(props: {
-    type: 'lightbulb' | 'memo'
-    children?: React.ReactNode
+    type: keyof TypeDefinition,
+    children?: React.ReactNode,
 }) {
     const [className, setClassName] = useState('');
     const [title, setTitle] = useState(<></>);
 
     useEffect(() => {
-        if (props.type == 'lightbulb') {
-            setClassName('md-alert-success');
+        const type = types[props.type];
+        if (type) {
+            setClassName(type[0]);
             setTitle(
                 <p className="alert-title">
-                    <span className="docon docon-lightbulb" aria-hidden="true"> &nbsp; </span>
-                    提示
-                </p>
-            );
-        } else if (props.type == 'memo') {
-            setClassName('md-alert-info');
-            setTitle(
-                <p className="alert-title">
-                    <span className="docon docon-memo" aria-hidden="true"> &nbsp; </span>
-                    备注
+                    <span className={`docon ${type[1]}`} aria-hidden="true"> &nbsp; </span>
+                    {type[2]}
                 </p>
             );
         } else {
