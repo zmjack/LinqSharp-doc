@@ -1,0 +1,46 @@
+.md-alert-success {
+    background-color: #dff6dd;
+    border: 1px solid #dff6dd;
+    padding: 1rem;
+}
+
+.dark .md-alert-success {
+    background-color: #054b16;
+    border: 1px solid #054b16;
+    padding: 1rem;
+}
+
+.md-alert-info {
+    background-color: #efd9fd;
+    border: 1px solid #efd9fd;
+    padding: 1rem;
+}
+
+.dark .md-alert-info {
+    background-color: #3b2e58;
+    border: 1px solid #3b2e58;
+    padding: 1rem;
+}
+
+.docon {
+    font-family: docons;
+    font-size: inherit;
+    font-variant: normal;
+    text-transform: none;
+    text-align: center;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    display: inline-block;
+}
+
+.docon-lightbulb::before {
+    content: "💡";
+}
+
+.docon-memo::before {
+    content: "📝";
+}
