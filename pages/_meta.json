@@ -5,7 +5,7 @@
     "memory": "Memory",
     "ef": "Entity Framework",
     "cli": "Command Line Tool",
-    "update-logs": "Update Logs",
+    "updates": "Update Logs",
     "site-zh": {
         "title": "中文",
         "type": "page",
