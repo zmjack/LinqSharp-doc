@@ -121,7 +121,7 @@ Employee  "1" --> "*" Order
 
 2. Use the follow command to install **Northwnd**:
 
-    ```powershel
+    ```powershel copy
     dotnet add package Microsoft.EntityFrameworkCore --version 7.0.0
     dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.0
     dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 7.0.0
@@ -132,7 +132,7 @@ Employee  "1" --> "*" Order
 
 3. Then, you need to add a `NorthwndFactory.cs` file in the root of your project:
 
-    ```csharp filename="NorthwndFactory.cs"
+    ```csharp copy filename="NorthwndFactory.cs"
     public class NorthwndFactory : IDesignTimeDbContextFactory<NorthwndContext>
     {
         private static readonly string _connectionString = "Data Source=northwnd.db";
@@ -150,13 +150,13 @@ Employee  "1" --> "*" Order
 
 4. Open a terminal, execute the follow script to generate a migration, and update it to database:
 
-    ```powershell
+    ```powershell copy
     dotnet ef migrations add InitNorthwnd
     ```
 
 5. Edit the `Program.cs` file:
 
-    ```csharp filename="Program.cs"
+    ```csharp copy filename="Program.cs"
     static void Main(string[] args)
     {
         var factory = new NorthwndFactory();
