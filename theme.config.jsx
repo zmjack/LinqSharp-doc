@@ -34,6 +34,21 @@ export default {
       </>
     );
   },
+  footer: {
+    text: (
+      <>
+        <span>
+          Copyright © 2020 <a href="https://linqsharp.net" target="_blank">
+            linqsharp.net
+          </a>.
+          <br />
+          Documentation website powered by <a href="https://nextra.site" target="_blank">
+            Nextra
+          </a>.
+        </span>
+      </>
+    )
+  },
   logo: <span>LinqSharp</span>,
   project: {
     link: 'https://github.com/zmjack/linqsharp'
