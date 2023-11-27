@@ -17,7 +17,7 @@ export default {
     key: 'zh-site',
     text: (
       <a href="https://zh.linqsharp.net" target="_blank">
-        🎉 您的语言为 中文，推荐访问 LinqSharp 中文站 →
+        🎉 推荐访问 LinqSharp 中文站 →
       </a>
     )
   },

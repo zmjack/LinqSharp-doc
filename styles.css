@@ -1,3 +1,12 @@
+:not(.dark) .nextra-banner-container {
+    background-color: #CEEBF9;
+    color: black;
+}
+
+.nx-mx-auto {
+    max-width: inherit !important;
+}
+
 .md-alert-primary {
     background-color: #d7eaf8;
     border: 1px solid #d7eaf8;
