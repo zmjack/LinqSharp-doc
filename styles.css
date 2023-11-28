@@ -3,8 +3,15 @@
     color: black;
 }
 
-.nextra-nav-container nav {
-    box-shadow: 0 8px 24px -2px rgba(0, 0, 0, .05);
+:not(.dark) .nextra-nav-container nav {
+    background-color: #fafaff;
+    box-shadow: 0 8px 24px -2px rgba(0, 0, 255, .05);
+    margin-bottom: 12px;
+}
+
+.dark .nextra-nav-container nav {
+    background-color: #11141c;
+    box-shadow: 0 8px 24px -2px rgba(0, 0, 255, .05);
     margin-bottom: 12px;
 }
 
