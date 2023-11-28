@@ -14,7 +14,7 @@ const types: TypeDefinition = {
     'warning': ['md-alert-warning', 'docon-warning', 'Warning'],
 };
 
-export default function Alert(props: {
+function Alert(props: {
     type: keyof TypeDefinition,
     children?: React.ReactNode,
 }) {
@@ -42,4 +42,25 @@ export default function Alert(props: {
             {props.children}
         </div>
     );
+}
+
+export function Note(props: {
+    children?: React.ReactNode,
+}) {
+    return <Alert type="note">{props.children}</Alert>
+}
+export function Tip(props: {
+    children?: React.ReactNode,
+}) {
+    return <Alert type="tip">{props.children}</Alert>
+}
+export function Important(props: {
+    children?: React.ReactNode,
+}) {
+    return <Alert type="important">{props.children}</Alert>
+}
+export function Warning(props: {
+    children?: React.ReactNode,
+}) {
+    return <Alert type="warning">{props.children}</Alert>
 }
