@@ -3,6 +3,11 @@
     color: black;
 }
 
+.nextra-nav-container nav {
+    box-shadow: 0 8px 24px -2px rgba(0, 0, 0, .05);
+    margin-bottom: 12px;
+}
+
 .nx-mx-auto {
     max-width: inherit !important;
 }
