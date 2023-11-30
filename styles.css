@@ -1,3 +1,11 @@
+:not(.dark) .logo {
+    height: 40px;
+}
+
+.dark .logo {
+    filter: grayscale(100%) brightness(300%);
+}
+
 :not(.dark) .nextra-banner-container {
     background-color: #CEEBF9;
     color: black;
