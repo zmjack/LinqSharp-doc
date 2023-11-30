@@ -1,5 +1,5 @@
-:not(.dark) .logo {
-    height: 40px;
+.logo {
+    height: 32px;
 }
 
 .dark .logo {
@@ -11,7 +11,7 @@
     color: black;
 }
 
-:not(.dark) .nextra-nav-container nav {
+.nextra-nav-container nav {
     box-shadow: 0 8px 24px -2px rgba(0, 0, 255, .05);
     margin-bottom: 12px;
 }
