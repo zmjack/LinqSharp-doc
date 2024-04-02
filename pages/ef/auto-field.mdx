@@ -1,11 +1,11 @@
 ## Automatic field
 
-| Legend             | Description             |
-| ------------------ | ----------------------- |
-| :pencil2:          | Automatic Managed       |
-| :heavy_check_mark: | Allow to take effect    |
-| :x:                | Disallow to take effect |
-| :warning:          | Throw error             |
+| Legend | Description             |
+| ------ | ----------------------- |
+| ✏️      | Automatic Managed       |
+| ✔️      | Allow to take effect    |
+| ❌      | Disallow to take effect |
+| ⚠️      | Throw error             |
 
 <br/>
 
@@ -13,11 +13,11 @@
 
 **AutoCreationTime** / **AutoLastWriteTime**
 
-|               | Add                | Modify             | Delete             |
-| ------------- | ------------------ | ------------------ | ------------------ |
-| **Auto**      | :pencil2:          | :pencil2:          | :heavy_check_mark: |
-| **Preserve**  | :heavy_check_mark: | :x:                | :heavy_check_mark: |
-| **Specified** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|  | Add  | Modify | Delete |
+| ---- | ------ | ------ | ------ |
+| **Auto**      | ✏️    | ✏️    | ✔️    |
+| **Preserve**  | ✔️    | ❌    | ✔️    |
+| **Specified** | ✔️    | ✔️    | ✔️    |
 
 <br/>
 
@@ -25,16 +25,17 @@
 
 The **database value** is **null**:
 
-|               | Add                | Modify             | Delete             |
-| ------------- | ------------------ | ------------------ | ------------------ |
-| **Auto**      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Preserve**  | :heavy_check_mark: | :x:                | :heavy_check_mark: |
-| **Specified** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|  | Add  | Modify | Delete |
+| ---- | ---- | ------ | ------ |
+| **Auto**      | ✔️    | ✔️    | ✔️   |
+| **Preserve**  | ✔️    | ❌    | ✔️    |
+| **Specified** | ✔️    | ✔️    | ✔️    |
 
 The **database value** is **not null**:
 
-|               | Add                | Modify             | Delete             |
-| ------------- | ------------------ | ------------------ | ------------------ |
-| **Auto**      | :heavy_check_mark: | :warning:          | :warning:          |
-| **Preserve**  | :heavy_check_mark: | :warning:          | :heavy_check_mark: |
-| **Specified** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|  | Add  | Modify | Delete |
+| ---- | ---- | ------ | ------ |
+| **Auto**      | ✔️    | ⚠️    | ⚠️    |
+| **Preserve**  | ✔️    | ⚠️    | ✔️    |
+| **Specified** | ✔️    | ✔️    | ✔️    |
+

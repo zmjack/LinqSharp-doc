@@ -1,11 +1,11 @@
-{    
-    "agent-query": "Agent Query",
-    "concurrency-resolving": "Concurrency Resolving",
+{
     "design-annotation": "Design Annotation",
     "format-annotation": "Format Annotation",
+    "auto-field": "Auto Field",
+    "concurrency-resolving": "Concurrency Resolving",
+    "agent-query": "Agent Query",
     "direct-handing": "Direct Handing",
     "monitoring": "Monitoring",
     "translator": "Translator",
-    "web-feature": "Web Feature",
-    "auto-field": "Auto Field"
+    "web-feature": "Web Feature"
 }
