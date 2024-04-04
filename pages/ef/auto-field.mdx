@@ -11,31 +11,35 @@
 
 ### Automatic Attributes
 
+#### Creation time / Last modification time
+
 **AutoCreationTime** / **AutoLastWriteTime**
 
-|  | Add  | Modify | Delete |
-| ---- | ------ | ------ | ------ |
-| **Auto**      | ✏️    | ✏️    | ✔️    |
-| **Preserve**  | ✔️    | ❌    | ✔️    |
-| **Specified** | ✔️    | ✔️    | ✔️    |
+|  | Add  | Delete | Modify |
+| ---- | :----: | :----: | :----: |
+| **Auto**      | ✏️    | ✔️  | ✏️  |
+| **Preserve**  | ✏️  | ✔️  | ❌   |
+| **Free** | ✔️    | ✔️    | ✔️    |
 
 <br/>
 
 **RowLock**
 
+When the field value is **not null**, the value of the specified column is prohibited from changing.
+
 The **database value** is **null**:
 
-|  | Add  | Modify | Delete |
-| ---- | ---- | ------ | ------ |
-| **Auto**      | ✔️    | ✔️    | ✔️   |
-| **Preserve**  | ✔️    | ❌    | ✔️    |
-| **Specified** | ✔️    | ✔️    | ✔️    |
+|              | Add  | Delete | Modify | Modify columns |
+| ------------ | :--: | :----: | :----: | :------------: |
+| **Auto**     |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
+| **Preserve** |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
+| **Free**     |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
 
 The **database value** is **not null**:
 
-|  | Add  | Modify | Delete |
-| ---- | ---- | ------ | ------ |
-| **Auto**      | ✔️    | ⚠️    | ⚠️    |
-| **Preserve**  | ✔️    | ❌    | ✔️    |
-| **Specified** | ✔️    | ✔️    | ✔️    |
+|              | Add  | Delete | Modify | Modify columns |
+| ------------ | :--: | :----: | :----: | :------------: |
+| **Auto**     |  ✔️   |   ⚠️    |   ⚠️    |       ⚠️        |
+| **Preserve** |  ✔️   |   ⚠️    |   ❌    |       ❌        |
+| **Free**     |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
 
