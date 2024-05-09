@@ -49,7 +49,7 @@ export default {
       </>
     )
   },
-  logo: <img className="logo" src="./logo.svg" alt="LinqSharp" />,
+  logo: <img className="logo" src="/logo.svg" alt="LinqSharp" />,
   project: {
     link: 'https://github.com/zmjack/linqsharp'
   },

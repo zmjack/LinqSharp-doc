@@ -1,45 +1,61 @@
 ## Automatic field
 
-| Legend | Description             |
-| ------ | ----------------------- |
-| ✏️      | Automatic Managed       |
-| ✔️      | Allow to take effect    |
-| ❌      | Disallow to take effect |
-| ⚠️      | Throw error             |
+### AutoMode Option
+
+| Option       | Description                                             |
+| ------------ | ------------------------------------------------------- |
+| **Auto**     | Automatic management.                                   |
+| **Free**     | Manual management.                                      |
+| **Suppress** | Ignores management rules and restores specified fields. |
+
+
+
+### Automatic time
+
+- **AutoCreationTime**
+  Automatically set **CreationTime**.
+- **AutoLastWriteTime**
+  Automatically set **LastWriteTime**.
+
+|                |  Auto   | Suppress |  Free   |
+| -------------- | :-----: | :------: | :-----: |
+| **Insert row** | ✔️ Auto  |  ✔️ Auto  | ✔️ Auto  |
+| **Delete row** | ✔️ Allow | ✔️ Allow  | ✔️ Allow |
+
+| Modification      |   Auto   | Suppress  |   Free   |
+| ----------------- | :------: | :-------: | :------: |
+| **Marked column** |  ✔️ Auto  | 🛑 Restore | ✏️ Manual |
+| **Other columns** | ✏️ Manual | ✏️ Manual  | ✏️ Manual |
 
 <br/>
 
-### Automatic Attributes
+### Row lock
 
-#### Creation time / Last modification time
-
-**AutoCreationTime** / **AutoLastWriteTime**
-
-|  | Add  | Delete | Modify |
-| ---- | :----: | :----: | :----: |
-| **Auto**      | ✏️    | ✔️  | ✏️  |
-| **Preserve**  | ✏️  | ✔️  | ❌   |
-| **Free** | ✔️    | ✔️    | ✔️    |
-
-<br/>
-
-**RowLock**
-
-When the field value is **not null**, the value of the specified column is prohibited from changing.
+- **RowLock**
+  When the field value is **not null**, the value of the specified column is prohibited from changing.
 
 The **database value** is **null**:
 
-|              | Add  | Delete | Modify | Modify columns |
-| ------------ | :--: | :----: | :----: | :------------: |
-| **Auto**     |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
-| **Preserve** |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
-| **Free**     |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
+|                |  Auto   | Suppress |  Free   |
+| -------------- | :-----: | :------: | :-----: |
+| **Insert row** | ✔️ Allow | ✔️ Allow  | ✔️ Allow |
+| **Delete row** | ✔️ Allow | ✔️ Allow  | ✔️ Allow |
+
+| Modification       |   Auto   | Suppress |   Free   |
+| ------------------ | :------: | :------: | :------: |
+| **Marked column**  | ✏️ Manual | ✏️ Manual | ✏️ Manual |
+| **Locked columns** | ✏️ Manual | ✏️ Manual | ✏️ Manual |
+| **Other columns**  | ✏️ Manual | ✏️ Manual | ✏️ Manual |
 
 The **database value** is **not null**:
 
-|              | Add  | Delete | Modify | Modify columns |
-| ------------ | :--: | :----: | :----: | :------------: |
-| **Auto**     |  ✔️   |   ⚠️    |   ⚠️    |       ⚠️        |
-| **Preserve** |  ✔️   |   ⚠️    |   ❌    |       ✔️        |
-| **Free**     |  ✔️   |   ✔️    |   ✔️    |       ✔️        |
+|                |   Auto   | Suppress |  Free   |
+| -------------- | :------: | :------: | :-----: |
+| **Insert row** |    -     |    -     |    -    |
+| **Delete row** | ❌ Forbid | ❌ Forbid | ✔️ Allow |
 
+| Modification       |   Auto   | Suppress  |   Free   |
+| ------------------ | :------: | :-------: | :------: |
+| **Marked column**  | ❌ Forbid | 🛑 Restore | ✏️ Manual |
+| **Locked columns** | ❌ Forbid | ✏️ Manual  | ✏️ Manual |
+| **Other columns**  | ✏️ Manual | ✏️ Manual  | ✏️ Manual |
